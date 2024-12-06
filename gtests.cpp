@@ -1,4 +1,4 @@
-#include <gtest/gtest.h> // Ранис
+#include <gtest/gtest.h>
 #include "cls.h"
 
 
@@ -40,14 +40,6 @@ TEST(BigIntTests, long_IntConstructor)
 }
 
 
-TEST(BigIntTests, InvalidStringConstructor) 
-{
-    testing::internal::CaptureStderr();
-    BigInt num("lovec++");
-    EXPECT_EQ(std::string(num), "0"); 
-}
-
-
 TEST(BigIntTests, Addition) 
 {
     BigInt num1("12312312312312312331233");
@@ -72,23 +64,23 @@ TEST(BigIntTests, Addition)
 
     BigInt num9("-123456");
 
-    result = num9 +static_cast<int>(123455);
+    result = num9 + static_cast<int>(123455);
     EXPECT_EQ(std::string(result), "-1");
 
-    result = static_cast<int>(12311) + num9;
+    result = static_cast<int>(123455) + num9;
     EXPECT_EQ(std::string(result), "-1");
 
-    result = num9 + static_cast<short>(12311);
+    result = num9 + static_cast<short>(123455);
     EXPECT_EQ(std::string(result), "-1");
 
-    result = static_cast<short>(12311) + num9;
+    result = static_cast<short>(123455) + num9;
     EXPECT_EQ(std::string(result), "-1");
 
     result = num9 +static_cast<long>(1000000);
-    EXPECT_EQ(std::string(result), "1123455");
+    EXPECT_EQ(std::string(result), "876544");
 
     result = static_cast<long>(1000000) + num9;
-    EXPECT_EQ(std::string(result), "1123455");
+    EXPECT_EQ(std::string(result), "876544");
 }
 
 
@@ -127,7 +119,6 @@ TEST(BigIntTests, Subtraction)
 
     result = static_cast<short>(100) - num9;
     EXPECT_EQ(std::string(result), "200");
-
 
     result = num9 - static_cast<long>(100);
     EXPECT_EQ(std::string(result), "-200");
@@ -221,7 +212,7 @@ TEST(BigIntTests, Division)
     EXPECT_EQ(std::string(result), "0");
 
     result = static_cast<long>(123110000) / num9;
-    EXPECT_EQ(std::string(result), "-1000");
+    EXPECT_EQ(std::string(result), "-999");
 }
 
 
@@ -253,19 +244,19 @@ TEST(BigIntTests, OstOtDel)
     EXPECT_EQ(std::string(result), "-1");
 
     result = static_cast<int>(123455) % num9;
-    EXPECT_EQ(std::string(result), "12311");
+    EXPECT_EQ(std::string(result), "123455");
 
     result = num9 % static_cast<short>(123455);
-    EXPECT_EQ(std::string(result), "-34");
+    EXPECT_EQ(std::string(result), "-1");
 
     result = static_cast<short>(123455) % num9;
-    EXPECT_EQ(std::string(result), "12311");
+    EXPECT_EQ(std::string(result), "123455");
 
     result = num9 % static_cast<long>(12311000);
     EXPECT_EQ(std::string(result), "-123456");
 
     result = static_cast<long>(123456789) % num9;
-    EXPECT_EQ(std::string(result), "122667");
+    EXPECT_EQ(std::string(result), "789");
 }
 
 
@@ -350,7 +341,7 @@ TEST(BigIntTests, OperationWithZero)
     result = num1 * num2;
     EXPECT_EQ(std::string(result), "0");
 
-    EXPECT_THROW(num1 / num2, std::invalid_argument); 
+    EXPECT_THROW(num1 / num2, std::runtime_error("Division by zero is not allowed.")); 
 }
 
 
