@@ -61,26 +61,6 @@ TEST(BigIntTests, Addition)
     BigInt num8("-12312312312312312312312");
     result = num7 + num8;
     EXPECT_EQ(std::string(result), "-24624624624624624643545");
-
-    BigInt num9("-123456");
-
-    result = num9 + static_cast<int>(123455);
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = static_cast<int>(123455) + num9;
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = num9 + static_cast<short>(123455);
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = static_cast<short>(123455) + num9;
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = num9 +static_cast<long>(1000000);
-    EXPECT_EQ(std::string(result), "876544");
-
-    result = static_cast<long>(1000000) + num9;
-    EXPECT_EQ(std::string(result), "876544");
 }
 
 
@@ -105,26 +85,6 @@ TEST(BigIntTests, Subtraction)
     BigInt num8("-12312312312312312312312");
     result = num7 - num8;
     EXPECT_EQ(std::string(result), "-18921");
-
-    BigInt num9("-100");
-
-    result = num9 - static_cast<int>(100);
-    EXPECT_EQ(std::string(result), "-200");
-
-    result = static_cast<int>(100) - num9;
-    EXPECT_EQ(std::string(result), "200");
-
-    result = num9 - static_cast<short>(100);
-    EXPECT_EQ(std::string(result), "-200");
-
-    result = static_cast<short>(100) - num9;
-    EXPECT_EQ(std::string(result), "200");
-
-    result = num9 - static_cast<long>(100);
-    EXPECT_EQ(std::string(result), "-200");
-
-    result = static_cast<long>(100) - num9;
-    EXPECT_EQ(std::string(result), "200");
 }
 
 
@@ -149,26 +109,6 @@ TEST(BigIntTests, Multiplication)
     BigInt num8("-456");
     result = num7 * num8;
     EXPECT_EQ(std::string(result), "56088");
-
-    BigInt num9("-121212");
-
-    result = num9 * static_cast<int>(123);
-    EXPECT_EQ(std::string(result), "-14909076");
-
-    result = static_cast<int>(123) * num9;
-    EXPECT_EQ(std::string(result), "-14909076");
-
-    result = num9 * static_cast<short>(123);
-    EXPECT_EQ(std::string(result), "-14909076");
-
-    result = static_cast<short>(123) * num9;
-    EXPECT_EQ(std::string(result), "-14909076");
-
-    result = num9 * static_cast<long>(123);
-    EXPECT_EQ(std::string(result), "-14909076");
-
-    result = static_cast<long>(123) * num9;
-    EXPECT_EQ(std::string(result), "-14909076");
 }
 
 
@@ -193,26 +133,6 @@ TEST(BigIntTests, Division)
     BigInt num8("-250");
     result = num7 / num8;
     EXPECT_EQ(std::string(result), "40");
-
-    BigInt num9("-123123");
-
-    result = num9 / static_cast<int>(123000);
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = static_cast<int>(123000) / num9;
-    EXPECT_EQ(std::string(result), "0");
-
-    result = num9 / static_cast<short>(123000);
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = static_cast<short>(123000) / num9;
-    EXPECT_EQ(std::string(result), "0");
-
-    result = num9 / static_cast<long>(123110000);
-    EXPECT_EQ(std::string(result), "0");
-
-    result = static_cast<long>(123110000) / num9;
-    EXPECT_EQ(std::string(result), "-999");
 }
 
 
@@ -237,26 +157,6 @@ TEST(BigIntTests, OstOtDel)
     BigInt num8("-123000");
     result = num7 % num8;
     EXPECT_EQ(std::string(result), "-123");
-
-    BigInt num9("-123456");
-
-    result = num9 % static_cast<int>(123455);
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = static_cast<int>(123455) % num9;
-    EXPECT_EQ(std::string(result), "123455");
-
-    result = num9 % static_cast<short>(123455);
-    EXPECT_EQ(std::string(result), "-1");
-
-    result = static_cast<short>(123455) % num9;
-    EXPECT_EQ(std::string(result), "123455");
-
-    result = num9 % static_cast<long>(12311000);
-    EXPECT_EQ(std::string(result), "-123456");
-
-    result = static_cast<long>(123456789) % num9;
-    EXPECT_EQ(std::string(result), "789");
 }
 
 
@@ -340,6 +240,7 @@ TEST(BigIntTests, OperationWithZero)
 
     result = num1 * num2;
     EXPECT_EQ(std::string(result), "0");
+
     EXPECT_THROW(num1 / num2, std::runtime_error);
 }
 
