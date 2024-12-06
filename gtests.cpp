@@ -340,8 +340,7 @@ TEST(BigIntTests, OperationWithZero)
 
     result = num1 * num2;
     EXPECT_EQ(std::string(result), "0");
-
-    EXPECT_THROW(num1 / num2, std::runtime_error("Division by zero is not allowed.")); 
+    EXPECT_THROW(num1 / num2, std::runtime_error);
 }
 
 
